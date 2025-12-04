@@ -12,6 +12,9 @@ class MS_Cache():
         return True
     
     def set(key, value):
+        # Ensure cache directory exists before writing
+        if not os.path.exists(__CACHE_DIR__):
+            os.makedirs(__CACHE_DIR__, exist_ok=True)
         with open(os.path.join(__CACHE_DIR__, key), 'wb') as f:
             pickle.dump(value, f)
 
@@ -27,3 +30,4 @@ class MS_Cache():
         if os.path.exists(cache_path):
             os.remove(cache_path)
         return True
+
