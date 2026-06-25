@@ -41,7 +41,8 @@ class TBG_Controller:
 
     @classmethod
     def _pidfile_dir(cls) -> Path:
-        p = Path(tempfile.gettempdir()) / "TBG"
+        import folder_paths
+        p = Path(folder_paths.get_temp_directory()) / "TBG"
         p.mkdir(parents=True, exist_ok=True)
         return p
 
